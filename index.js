@@ -2,6 +2,7 @@ const express = require("express");
 const { MongoClient } = require("mongodb");
 const jwt = require("jsonwebtoken");
 const bodyParser = require("body-parser");
+const { connectToDb, db } = require("./db");
 
 const app = express();
 const port = 3000;
@@ -109,4 +110,5 @@ function authenticateJWT(req, res, next) {
 
 app.listen(port, () => {
   console.log(`App is running at ${port}`);
+  connectToDb();
 });
